@@ -9,6 +9,7 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
 import javax.mail.MessagingException;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import java.util.Map;
 
@@ -46,6 +47,8 @@ public class EmailService {
 
         String html = templateEngine.process(templateName, context);  // template 이름 작성
         helper.setText(html, true);
+
+        mimeMessage.setHeader("Content-Transfer-Encoding", "base64");// Base64 인코딩 설정 추가
 
         mailSender.send(mimeMessage);
     }
