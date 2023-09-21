@@ -37,7 +37,7 @@ public class EmailService {
                                  Map<String, Object> variables) throws MessagingException {
 
         MimeMessage mimeMessage = mailSender.createMimeMessage();
-        MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
+        MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
 
         helper.setTo(to);   // 보낼 사람
         helper.setSubject(subject); // 제목
